@@ -4,7 +4,7 @@ import webpack from 'webpack'
 const plugins = []
 
 const config = {
-	entry: ['babel-polyfill', './src/entry.js'],
+	entry: ['babel-polyfill', path.resolve(__dirname, './src/entry.js')],
 	output: {
 		path: path.resolve(__dirname, './build'),
 		filename: '[name].js',
@@ -15,6 +15,8 @@ const config = {
 			{
 				test: /.jsx?$/,
 				loader: 'babel-loader',
+				include: path.resolve(__dirname, './src'),
+				exclude: /node_modules/,
 			},
 			{
 				test: /.(css|styl)/,
@@ -25,3 +27,5 @@ const config = {
 
 	plugins,
 }
+
+export default config

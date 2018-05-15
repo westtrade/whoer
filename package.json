@@ -21,11 +21,13 @@
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
 		"babel-polyfill": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
 		"babel-preset-react": "^6.24.1",
 		"css-loader": "^0.28.11",
 		"jest": "^22.4.3",
+		"react-dom": "^16.3.2",
 		"react-redux": "^5.0.7",
 		"react-router": "^4.2.0",
 		"react-router-redux": "^4.0.8",
