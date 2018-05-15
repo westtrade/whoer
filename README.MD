@@ -17,7 +17,7 @@ yarn
 ```sh
 npm run development
 ```
-Open  in browser (http://localhost:80/)
+Open  in browser (http://localhost:8080/)
 
 ## Build
 
