@@ -13,3 +13,4 @@
 - [] Change titles on switch page
 - [] Add preload css
 - [+] Add bootstrap loading
+- [] Add sorts to table
