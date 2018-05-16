@@ -1,5 +1,4 @@
 import axios from 'axios'
-import btoa from 'btoa'
 
 /**
  * WHOER server base URL
