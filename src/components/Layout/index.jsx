@@ -33,7 +33,8 @@ const Layout = ({ children, title = 'Translations' }) => {
 
 export default withRouter(
 	connect((state, props) => {
-		console.log('props.match', props.match)
+		// console.log('props.match', props.match)
+		console.log('state.page', state.page)
 		return {
 			children: props.children,
 			title: state.page.title,

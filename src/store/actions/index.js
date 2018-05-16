@@ -40,6 +40,7 @@ export const setActiveLanguage = (language = 'ru') => {
 		})
 
 		dispatch(fetchTranslations(language))
+		dispatch(fetchLexicon(language))
 	}
 }
 
@@ -73,7 +74,7 @@ export const fetchTranslations = (language = 'en') => {
 	}
 }
 
-export const fetchLexicon = () => {
+export const fetchLexicon = (language = 'en') => {
 	return async dispatch => {
 		dispatch({
 			type: actions.LOADING,
@@ -81,7 +82,7 @@ export const fetchLexicon = () => {
 		})
 
 		try {
-			const { data: payload } = await api.lexicon()
+			const { data: payload } = await api.lexicon(language)
 			dispatch({
 				type: actions.FETCH_LEXICON,
 				payload,
@@ -145,5 +146,19 @@ export const initializeData = (language = 'en') => {
 			type: actions.LOADING,
 			payload: false,
 		})
+	}
+}
+
+export const setPageTitle = (pageTitle = '') => {
+	return {
+		type: actions.SET_PAGE_TITLE,
+		payload: pageTitle,
+	}
+}
+
+export const setPageSubTitle = (pageSubTitle = '') => {
+	return {
+		type: actions.SET_PAGE_SUB_TITLE,
+		payload: pageSubTitle,
 	}
 }

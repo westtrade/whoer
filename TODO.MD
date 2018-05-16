@@ -1,5 +1,5 @@
 - [] Gh-pages add prefix for url
-- [] Lexicon page
+- [+] Lexicon page
 - [] Create page
 - [] Edit page
 - [] Delete modal

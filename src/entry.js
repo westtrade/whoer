@@ -23,14 +23,14 @@ const App = () => {
 				<Layout>
 					<Switch>
 						<Route path="/" exact component={FrontPage} />
-						<Route path="lexicon" component={LexiconPage} />
+						<Route path="/lexicon" component={LexiconPage} />
 						<Route
-							path="translation/create"
+							path="/translation/create"
 							exact={true}
 							component={TranslationForm}
 						/>
 						<Route
-							path="translation/edit/:id"
+							path="/translation/edit/:id"
 							component={TranslationForm}
 						/>
 						<Route

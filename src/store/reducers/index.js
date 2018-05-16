@@ -36,6 +36,16 @@ export const loading = (isLoading = false, action = {}) => {
 export const page = (page, action = {}) => {
 	page = page || {
 		title: 'Translations',
+		subTitle: '',
+	}
+
+	if (action.type === actions.SET_PAGE_TITLE) {
+		page.title = action.payload
+		page.subTitle = ''
+	}
+
+	if (action.type === actions.SET_PAGE_SUBTITLE) {
+		page.subTitle = action.payload
 	}
 
 	return page
@@ -56,4 +66,5 @@ export default combineReducers({
 	translations,
 	loading,
 	page,
+	lexicon,
 })
