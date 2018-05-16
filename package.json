@@ -11,9 +11,7 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"dependencies": {
-		"dotenv-extended": "^2.0.2"
-	},
+	"dependencies": {},
 	"jest": {
 		"moduleFileExtensions": [
 			"js",
@@ -31,15 +29,21 @@
 		"babel-preset-react": "^6.24.1",
 		"btoa": "^1.2.1",
 		"css-loader": "^0.28.11",
+		"dotenv-extended": "^2.0.2",
 		"jest": "^22.4.3",
 		"react": "^16.3.2",
 		"react-dom": "^16.3.2",
 		"react-redux": "^5.0.7",
 		"react-router": "^4.2.0",
+		"react-router-dom": "^4.3.0-rc.3",
 		"react-router-redux": "^4.0.8",
 		"redux": "^4.0.0",
+		"redux-devtools": "^3.4.1",
+		"redux-thunk": "^2.2.0",
+		"style-loader": "^0.21.0",
 		"stylus": "^0.54.5",
 		"stylus-loader": "^3.0.2",
+		"url-loader": "^1.0.1",
 		"webpack": "^4.8.3",
 		"webpack-cli": "^2.1.3",
 		"webpack-dev-server": "^3.1.4"

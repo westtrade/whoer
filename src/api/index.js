@@ -5,7 +5,8 @@ import btoa from 'btoa'
  * WHOER server base URL
  * @type {String}
  */
-const WHOER_API = 'http://new.whoer.net'
+// const WHOER_API = 'http://new.whoer.net'
+const WHOER_API = ''
 
 /**
  * Get languages list
@@ -118,10 +119,10 @@ export const deleteTranslation = async (id, credentials = {}) =>
 /**
  * Get translations list
  * @param  {String}  [language='ru'] Translations language
- * @param  {[type]}  credentials     User credentials
+ * @param  {Object}  credentials     User credentials
  * @return {Promise}                 Array of translations (axios response)
  */
-export const translations = async (language = 'ru', credentials) =>
+export const translations = async (language = 'ru', credentials = {}) =>
 	axios({
 		method: 'GET',
 		baseURL: WHOER_API,

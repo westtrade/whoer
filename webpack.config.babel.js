@@ -1,7 +1,12 @@
+import dotenv from 'dotenv-extended'
 import path from 'path'
 import webpack from 'webpack'
 
-const plugins = []
+dotenv.load()
+
+const plugins = [
+	new webpack.EnvironmentPlugin(['WHOER_USERNAME', 'WHOER_PASSWORD']),
+]
 
 const config = {
 	entry: ['babel-polyfill', path.resolve(__dirname, './src/entry.js')],
@@ -20,12 +25,41 @@ const config = {
 			},
 			{
 				test: /.(css|styl)/,
-				use: ['style-loader', 'css-loader', 'stylus-loader'],
+				include: [path.resolve(__dirname, './src')],
+				use: [
+					'style-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							importLoaders: true,
+							camelCase: 'dashes',
+							// localIdentName:
+							// 	'[path]___[name]__[local]___[hash:base64:5]',
+						},
+					},
+					'stylus-loader',
+				],
 			},
 		],
 	},
 
 	plugins,
+
+	resolve: {
+		extensions: ['.js', '.jsx', '.styl', '.css', '.json'],
+	},
+
+	devServer: {
+		proxy: {
+			'/v2': 'http://new.whoer.net',
+			pathRewrite: { '^/v2': '' },
+			secure: false,
+			changeOrigin: true,
+			logLevel: 'debug',
+		},
+		historyApiFallback: true,
+	},
 }
 
 export default config

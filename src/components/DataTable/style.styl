@@ -1,0 +1,11 @@
+.table
+	display grid
+	grid-template-columns: repeat(6, 1fr)
+	margin-top 20px
+
+.cell
+	border-bottom solid 1px silver
+	border-right solid 1px silver
+	padding 5px 25px
+	&:nth-child(6n)
+		border-right none
