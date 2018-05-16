@@ -43,7 +43,6 @@ const App = () => {
 		</Provider>
 	)
 }
-;(async () => {
-	ReactDOM.render(<App />, document.getElementById('app'))
-	store.dispatch(initializeData('en'))
-})()
+
+ReactDOM.render(<App />, document.getElementById('app'))
+store.dispatch(initializeData('en'))
