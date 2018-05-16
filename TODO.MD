@@ -1,0 +1,13 @@
+- [] Gh-pages add prefix for url
+- [] Lexicon page
+- [] Create page
+- [] Edit page
+- [] Delete modal
+- [] Loading modal
+- [] Redux tests
+- [] View tanslation page
+- [] Add Back button to page (Create, Edit, View)
+- [] Watch stream
+- [] Check forms
+- [] Add docs to redux functions
+- [] Change titles on switch page
