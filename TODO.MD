@@ -11,3 +11,5 @@
 - [] Check forms
 - [] Add docs to redux functions
 - [] Change titles on switch page
+- [] Add preload css
+- [+] Add bootstrap loading

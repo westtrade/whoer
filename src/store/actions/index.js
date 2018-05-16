@@ -99,3 +99,51 @@ export const fetchLexicon = () => {
 		})
 	}
 }
+
+export const initializeData = (language = 'en') => {
+	return async dispatch => {
+		dispatch({
+			type: actions.LOADING,
+			payload: true,
+		})
+
+		dispatch({
+			type: actions.SET_ACTIVE_LANGUAGE,
+			payload: language,
+		})
+
+		try {
+			const { data: payload } = await api.languages()
+			dispatch({
+				type: actions.FETCH_LANGUAGES,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		try {
+			const { data: payload } = await api.translations(
+				language,
+				credentials,
+			)
+			dispatch({
+				type: actions.FETCH_TRANSLATIONS,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		dispatch({
+			type: actions.LOADING,
+			payload: false,
+		})
+	}
+}
