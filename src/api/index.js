@@ -6,7 +6,7 @@ import btoa from 'btoa'
  * @type {String}
  */
 // const WHOER_API = 'http://new.whoer.net'
-const WHOER_API = ''
+const WHOER_API = 'https://cors-anywhere.herokuapp.com/http://new.whoer.net'
 
 /**
  * Get languages list

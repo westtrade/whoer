@@ -1,7 +1,10 @@
+import * as actions from '../../store/actions'
+
 import React, { Fragment } from 'react'
 
 import DateField from '../DateField'
 import HeaderCell from '../HeaderCell'
+import { connect } from 'react-redux'
 import style from './style'
 
 const DataTable = ({
@@ -44,4 +47,6 @@ const DataTable = ({
 	)
 }
 
-export default DataTable
+export default connect(state => ({
+	data: state.translations,
+}))(DataTable)

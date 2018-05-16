@@ -13,10 +13,7 @@
 	"license": "ISC",
 	"dependencies": {},
 	"jest": {
-		"moduleFileExtensions": [
-			"js",
-			"jsx"
-		],
+		"moduleFileExtensions": ["js", "jsx"],
 		"testEnvironment": "node",
 		"testRegex": "/test/.*\\.test\\.jsx?$"
 	},
@@ -38,7 +35,6 @@
 		"react-router-dom": "^4.3.0-rc.3",
 		"react-router-redux": "^4.0.8",
 		"redux": "^4.0.0",
-		"redux-devtools": "^3.4.1",
 		"redux-thunk": "^2.2.0",
 		"style-loader": "^0.21.0",
 		"stylus": "^0.54.5",

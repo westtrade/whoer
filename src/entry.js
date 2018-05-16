@@ -4,42 +4,45 @@ import * as api from './api'
 
 import React, { Fragment } from 'react'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { fetchLanguages, setActiveLanguage } from './store/actions'
 
 import Button from './components/Button'
-import CreateTranslationPage from './components/CreateTranslationPage'
 import DataTable from './components/DataTable'
 import FrontPage from './components/FrontPage'
 import Layout from './components/Layout'
+import LexiconPage from './components/LexiconPage'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
+import TranslationForm from './components/TranslationForm'
 import store from './store'
 
 const App = () => {
 	return (
 		<Provider store={store}>
 			<Router>
-				<Layout title="Translates">
-					<Route path="/" exact={true} component={FrontPage} />
+				<Layout>
+					<Route path="/lexicon" component={LexiconPage} />
 					<Route
 						path="/translation/create"
-						component={CreateTranslationPage}
+						exact={true}
+						component={TranslationForm}
 					/>
+					<Route
+						path="/translation/edit/:id"
+						component={TranslationForm}
+					/>
+					<Route
+						path="/translation/view/:id"
+						component={TranslationForm}
+					/>
+					<Route path="/" exact={true} component={FrontPage} />
 				</Layout>
 			</Router>
 		</Provider>
 	)
 }
-
-process.env
-const { WHOER_USERNAME: username, WHOER_PASSWORD: password } = process.env
 ;(async () => {
-	const credentials = { username, password }
-	const { data } = await api.translations('ru', {
-		username,
-		password,
-	})
-
-	// console.log('data', data)
-
+	store.dispatch(fetchLanguages())
+	store.dispatch(setActiveLanguage('en'))
 	ReactDOM.render(<App />, document.getElementById('app'))
 })()

@@ -8,7 +8,7 @@
 	font-weight bold
 
 .header
-	height 140px
+	height 180px
 	background-color #53BF40
 	box-sizing border-box
 	position relative
@@ -19,7 +19,7 @@
 .page-title
 	color #fff
 	position absolute
-	bottom 20px
+	bottom 50px
 	left 80px
 	text-transform uppercase
 
@@ -32,3 +32,21 @@
 .brand
 	color #fff
 	text-decoration none
+	margin-right 20px
+
+.link
+	color #fff
+	display inline-block
+	padding 0 10px
+	text-decoration none
+	transition background-color .3s
+	&.active
+		background-color rgba(0, 0, 0, 0.2)
+	&:hover
+		background-color rgba(0, 0, 0, 0.2)
+		transition background-color .3s
+
+.languages
+	position absolute
+	bottom 0
+	left 80px
