@@ -1,14 +1,25 @@
 import axios from 'axios'
 
+process.env
+const { WHOER_USERNAME: username, WHOER_PASSWORD: password } = process.env
+export const credentials = { username, password }
+
 /**
  * WHOER server base URL
  * @type {String}
  */
-// const WHOER_API = 'http://new.whoer.net'
-const WHOER_API =
-	window.location.hostname === 'localhost'
+const BROWSER_WHOER_API =
+	global.location &&
+	(global.location.hostname === 'localhost'
 		? ''
-		: 'https://cors-anywhere.herokuapp.com/http://new.whoer.net'
+		: 'https://cors-anywhere.herokuapp.com/http://new.whoer.net')
+
+const WHOER_API =
+	typeof BROWSER_WHOER_API !== 'string'
+		? 'http://new.whoer.net'
+		: BROWSER_WHOER_API
+
+export const EVENTS_STREAM_URL = `${WHOER_API}/v2/stream`
 
 /**
  * Get languages list

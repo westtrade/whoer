@@ -1,9 +1,46 @@
 import * as actions from './actionTypes'
 import * as api from '../../api'
 
-process.env
-const { WHOER_USERNAME: username, WHOER_PASSWORD: password } = process.env
-const credentials = { username, password }
+const { credentials } = api
+
+export const updateTranslationsByEvent = (eventTranslation = {}) => {
+	let action = 'create'
+	eventTranslation = JSON.parse(eventTranslation)
+	if (eventTranslation.created !== eventTranslation.updated) {
+		action = 'update'
+	}
+
+	if (eventTranslation.deleted) {
+		action = 'delete'
+	}
+
+	return async (dispatch, getState) => {
+		if (action === 'delete') {
+			dispatch({
+				type: actions.UPDATE_TRANSLATIONS_BY_EVENT,
+				payload: {
+					translation: eventTranslation,
+					action,
+				},
+			})
+		}
+
+		const { activeLanguage } = getState()
+
+		const { data: translation } = await api.translation(
+			eventTranslation.id,
+			activeLanguage,
+			credentials,
+		)
+		dispatch({
+			type: actions.UPDATE_TRANSLATIONS_BY_EVENT,
+			payload: {
+				translation,
+				action,
+			},
+		})
+	}
+}
 
 export const createTranslation = (translation = {}) => {
 	return async (dispatch, getState) => {

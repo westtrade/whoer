@@ -1,6 +1,5 @@
 import './common'
-
-import * as api from './api'
+import './watch'
 
 import React, { Fragment } from 'react'
 import { Route, HashRouter as Router, Switch } from 'react-router-dom'

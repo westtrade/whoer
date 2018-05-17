@@ -75,15 +75,17 @@ class TranslationForm extends React.Component {
 				<Link to="/">
 					<Button className={style.backButton}>&laquo; Back</Button>
 				</Link>
-				<div className={style.wrapper}>
-					<input
-						className={style.input}
-						placeholder="Name *"
-						name="name"
-						value={translation.name || ''}
-						onChange={this.handleChange}
-					/>
-				</div>
+				{!id && (
+					<div className={style.wrapper}>
+						<input
+							className={style.input}
+							placeholder="Name *"
+							name="name"
+							value={translation.name || ''}
+							onChange={this.handleChange}
+						/>
+					</div>
+				)}
 				<div className={style.wrapper}>
 					<textarea
 						className={style.input}
