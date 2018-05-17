@@ -54,6 +54,7 @@ const DataTable = ({ data = [], sortTranslationsBy = field => {} }) => {
 					</div>
 				</Fragment>
 			))}
+			{!data.length && <div className={style.empty}>No data</div>}
 		</div>
 	)
 }
