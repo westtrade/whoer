@@ -4,20 +4,22 @@ import Button from '../Button'
 import DataTable from '../DataTable'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { setPageTitle } from '../../store/actions'
+import store from '../../store'
 
-const FrontPage = ({ data = [] }) => {
-	return (
-		<Fragment>
-			<Link to="/translation/create">
-				<Button>Create translation</Button>
-			</Link>
-			<DataTable data={data} />
-		</Fragment>
-	)
-}
-
-export default connect(state => {
-	return {
-		data: state.translations || [],
+export default class FrontPage extends React.Component {
+	componentDidMount() {
+		store.dispatch(setPageTitle('Translations'))
 	}
-})(FrontPage)
+
+	render() {
+		return (
+			<Fragment>
+				<Link to="/translation/create">
+					<Button>Create translation</Button>
+				</Link>
+				<DataTable />
+			</Fragment>
+		)
+	}
+}

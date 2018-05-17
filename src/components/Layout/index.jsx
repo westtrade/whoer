@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import style from './style'
 import { withRouter } from 'react-router-dom'
 
-const Layout = ({ children, title = 'Translations' }) => {
+const Layout = ({ children, title = '', subTitle = '' }) => {
 	return (
 		<div className={style.layout}>
 			<div className={style.topBar}>
@@ -23,7 +23,12 @@ const Layout = ({ children, title = 'Translations' }) => {
 				</NavLink>
 			</div>
 			<div className={style.header}>
-				<h1 className={style.pageTitle}>{title}</h1>
+				<div className={style.info}>
+					<h1 className={style.pageTitle}>{title}</h1>
+					{subTitle && (
+						<h2 className={style.subTitle}> &raquo; {subTitle}</h2>
+					)}
+				</div>
 				<LanguageSelector className={style.languages} />
 			</div>
 			<div className={style.content}>{children}</div>
@@ -33,11 +38,10 @@ const Layout = ({ children, title = 'Translations' }) => {
 
 export default withRouter(
 	connect((state, props) => {
-		// console.log('props.match', props.match)
-		console.log('state.page', state.page)
 		return {
 			children: props.children,
 			title: state.page.title,
+			subTitle: state.page.subTitle,
 		}
 	})(Layout),
 )

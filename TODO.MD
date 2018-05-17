@@ -1,6 +1,7 @@
 - [] Gh-pages add prefix for url
 - [+] Lexicon page
 - [] Create page
+- [] Check forms
 - [] Edit page
 - [] Delete modal
 - [] Loading modal
@@ -8,9 +9,8 @@
 - [] View tanslation page
 - [] Add Back button to page (Create, Edit, View)
 - [] Watch stream
-- [] Check forms
 - [] Add docs to redux functions
-- [] Change titles on switch page
+- [+] Change titles on switch page
 - [] Add preload css
 - [+] Add bootstrap loading
 - [] Add sorts to table

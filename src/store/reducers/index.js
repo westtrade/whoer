@@ -40,12 +40,14 @@ export const page = (page, action = {}) => {
 	}
 
 	if (action.type === actions.SET_PAGE_TITLE) {
-		page.title = action.payload
-		page.subTitle = ''
+		return {
+			title: action.payload,
+			subTitle: '',
+		}
 	}
 
 	if (action.type === actions.SET_PAGE_SUBTITLE) {
-		page.subTitle = action.payload
+		return { ...page, subTitle: action.payload }
 	}
 
 	return page

@@ -16,13 +16,9 @@ class LexiconPage extends React.Component {
 		return (
 			<div className={style.page}>
 				{Object.entries(lexicon).map(([key, value], idx) => (
-					<Fragment>
-						<div className={style.key} key={`${key}_${idx}`}>
-							{key}
-						</div>
-						<div className={style.value} key={`${key}_${idx}`}>
-							{value}
-						</div>
+					<Fragment key={`${key}_${idx}`}>
+						<div className={style.key}>{key}</div>
+						<div className={style.value}>{value}</div>
 					</Fragment>
 				))}
 			</div>

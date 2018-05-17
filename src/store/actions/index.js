@@ -158,7 +158,7 @@ export const setPageTitle = (pageTitle = '') => {
 
 export const setPageSubTitle = (pageSubTitle = '') => {
 	return {
-		type: actions.SET_PAGE_SUB_TITLE,
+		type: actions.SET_PAGE_SUBTITLE,
 		payload: pageSubTitle,
 	}
 }
