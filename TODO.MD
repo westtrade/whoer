@@ -7,12 +7,13 @@
 - [+] Add Back button to page (Create, Edit, View)
 - [+] Change titles on switch page
 - [+] Add bootstrap loading
+- [+] Watch stream
 - [] Add sorts to table
 - [] Add error message
 - [] Empty table message
 - [] Check forms
 - [] Loading modal
 - [] Redux tests
-- [] Watch stream
 - [] Add docs to redux functions
 - [] Add preload css
+- [] Multilanguage

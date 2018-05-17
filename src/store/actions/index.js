@@ -42,6 +42,22 @@ export const updateTranslationsByEvent = (eventTranslation = {}) => {
 	}
 }
 
+/**
+ * Sort translation by field in datatable
+ * @param  {string} field   DataTable fieldname
+ * @param  {Number} [direction=0] Sort direction -1 Descending, 1 Ascending, 0 Toggle
+ * @return {void}
+ */
+export const sortTranslationsBy = (field, direction = 0) => {
+	return {
+		type: actions.SORT_TRANSLATIONS_BY,
+		payload: {
+			field,
+			direction,
+		},
+	}
+}
+
 export const createTranslation = (translation = {}) => {
 	return async (dispatch, getState) => {
 		dispatch({
