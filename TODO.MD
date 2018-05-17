@@ -9,9 +9,9 @@
 - [+] Add bootstrap loading
 - [+] Watch stream
 - [+] Add sorts to table
-- [] Empty table message
-- [] Add error message
+- [+] Empty table message
 - [] Check forms
+- [] Add error message
 - [] Loading modal
 - [] Redux tests
 - [] Add docs to redux functions
