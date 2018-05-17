@@ -5,6 +5,78 @@ process.env
 const { WHOER_USERNAME: username, WHOER_PASSWORD: password } = process.env
 const credentials = { username, password }
 
+export const createTranslation = (translation = {}) => {
+	return async (dispatch, getState) => {
+		dispatch({
+			type: actions.LOADING,
+			payload: true,
+		})
+
+		const { activeLanguage } = getState()
+		const { name, snippet } = translation
+
+		try {
+			const { data: payload } = await api.createTranslation(
+				name,
+				snippet,
+				activeLanguage,
+				credentials,
+			)
+
+			dispatch({
+				type: actions.CREATE_TRANSLATION,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		dispatch({
+			type: actions.LOADING,
+			payload: false,
+		})
+	}
+}
+
+export const updateTranslation = (id, translation = {}) => {
+	return async (dispatch, getState) => {
+		dispatch({
+			type: actions.LOADING,
+			payload: true,
+		})
+
+		const { activeLanguage } = getState()
+		const { name, snippet } = translation
+
+		try {
+			const { data: payload } = await api.updateTranslation(
+				id,
+				snippet,
+				activeLanguage,
+				credentials,
+			)
+
+			dispatch({
+				type: actions.UPDATE_TRANSLATION,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		dispatch({
+			type: actions.LOADING,
+			payload: false,
+		})
+	}
+}
+
 export const fetchLanguages = () => {
 	return async dispatch => {
 		dispatch({
@@ -33,7 +105,8 @@ export const fetchLanguages = () => {
 }
 
 export const setActiveLanguage = (language = 'ru') => {
-	return dispatch => {
+	return (dispatch, getState) => {
+		const { translation } = getState()
 		dispatch({
 			type: actions.SET_ACTIVE_LANGUAGE,
 			payload: language,
@@ -41,6 +114,9 @@ export const setActiveLanguage = (language = 'ru') => {
 
 		dispatch(fetchTranslations(language))
 		dispatch(fetchLexicon(language))
+		if (translation && translation.id) {
+			dispatch(fetchTranslation(translation.id, language))
+		}
 	}
 }
 
@@ -58,6 +134,38 @@ export const fetchTranslations = (language = 'en') => {
 			)
 			dispatch({
 				type: actions.FETCH_TRANSLATIONS,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		dispatch({
+			type: actions.LOADING,
+			payload: false,
+		})
+	}
+}
+
+export const fetchTranslation = (id, language = '') => {
+	return async dispatch => {
+		dispatch({
+			type: actions.LOADING,
+			payload: true,
+		})
+
+		try {
+			const { data: payload } = await api.translation(
+				id,
+				language,
+				credentials,
+			)
+
+			dispatch({
+				type: actions.FETCH_TRANSLATION,
 				payload,
 			})
 		} catch (e) {

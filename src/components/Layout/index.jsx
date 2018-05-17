@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 
+import { Helmet } from 'react-helmet'
 import LanguageSelector from '../LanguageSelector'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -32,6 +33,12 @@ const Layout = ({ children, title = '', subTitle = '' }) => {
 				<LanguageSelector className={style.languages} />
 			</div>
 			<div className={style.content}>{children}</div>
+			<Helmet>
+				<title>
+					{title}
+					{subTitle && ` (${subTitle})`} - WHOER Translate UI
+				</title>
+			</Helmet>
 		</div>
 	)
 }

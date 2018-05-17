@@ -1,14 +1,14 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 
+// import promiseMiddleware from 'redux-promise-middleware'
 import reducers from './reducers'
-import thunk from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 
 const middlewares = compose(
-	applyMiddleware(thunk),
+	// applyMiddleware(thunkMiddleware, promiseMiddleware()),
+	applyMiddleware(thunkMiddleware),
 	window.__REDUX_DEVTOOLS_EXTENSION__ &&
 		window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
-const store = createStore(reducers, middlewares)
-
-export default store
+export default createStore(reducers, middlewares)

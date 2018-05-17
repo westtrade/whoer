@@ -4,6 +4,7 @@ import * as api from './api'
 
 import React, { Fragment } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { fetchTranslation, initializeData } from './store/actions'
 
 import Button from './components/Button'
 import DataTable from './components/DataTable'
@@ -13,7 +14,6 @@ import LexiconPage from './components/LexiconPage'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 import TranslationForm from './components/TranslationForm'
-import { initializeData } from './store/actions'
 import store from './store'
 
 const App = () => {
@@ -46,3 +46,4 @@ const App = () => {
 
 ReactDOM.render(<App />, document.getElementById('app'))
 store.dispatch(initializeData('en'))
+store.dispatch(fetchTranslation('34', 'ru'))

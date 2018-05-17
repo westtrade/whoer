@@ -4,6 +4,7 @@ import React, { Fragment } from 'react'
 
 import DateField from '../DateField'
 import HeaderCell from '../HeaderCell'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import style from './style'
 
@@ -39,7 +40,26 @@ const DataTable = ({
 						<div className={style.cell}>{item.snippet}</div>
 						<DateField className={style.cell} date={item.created} />
 						<DateField className={style.cell} date={item.updated} />
-						<div className={style.cell}>delete edit</div>
+						<div className={style.cell}>
+							<Link
+								className={style.action}
+								to={`/translation/${item.id}`}
+							>
+								view
+							</Link>
+							<Link
+								className={style.action}
+								to={`/translation/edit/${item.id}`}
+							>
+								edit
+							</Link>
+							<Link
+								className={style.action}
+								to={`/translation/delete/${item.id}`}
+							>
+								delete
+							</Link>
+						</div>
 					</Fragment>
 				)
 			})}

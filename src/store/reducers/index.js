@@ -61,6 +61,14 @@ export const lexicon = (lexicon = [], action) => {
 	return lexicon
 }
 
+export const translation = (translation = null, action) => {
+	if (action.type === actions.FETCH_TRANSLATION) {
+		return action.payload
+	}
+
+	return translation
+}
+
 export default combineReducers({
 	languages,
 	translations,
@@ -69,4 +77,5 @@ export default combineReducers({
 	loading,
 	page,
 	lexicon,
+	translation,
 })
