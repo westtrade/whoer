@@ -11,6 +11,13 @@ With yarn
 yarn
 ```
 
+## Dependencies
+
+- React
+- React Router 4.x
+- Webpack 4
+- Stylus
+
 
 ## Run development
 

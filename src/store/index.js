@@ -4,12 +4,10 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import reducers from './reducers'
 import thunkMiddleware from 'redux-thunk'
 
-const midsStack = [applyMiddleware(thunkMiddleware)]
-
-if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-	midsStack.push(window.__REDUX_DEVTOOLS_EXTENSION__())
-}
-
-const middlewares = compose(...midsStack)
+const middlewares = compose(
+	applyMiddleware(thunkMiddleware),
+	window.__REDUX_DEVTOOLS_EXTENSION__ &&
+		window.__REDUX_DEVTOOLS_EXTENSION__(),
+)
 
 export default createStore(reducers, middlewares)

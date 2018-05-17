@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react'
+import { fetchTranslations, setPageTitle } from '../../store/actions'
 
 import Button from '../Button'
 import DataTable from '../DataTable'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setPageTitle } from '../../store/actions'
 import store from '../../store'
 
-export default class FrontPage extends React.Component {
+class FrontPage extends React.Component {
 	componentDidMount() {
 		store.dispatch(setPageTitle('Translations'))
+		store.dispatch(fetchTranslations(this.props.activeLanguage))
 	}
 
 	render() {
@@ -23,3 +24,5 @@ export default class FrontPage extends React.Component {
 		)
 	}
 }
+
+export default connect(({ activeLanguage }) => ({ activeLanguage }))(FrontPage)

@@ -3,6 +3,7 @@ import * as actions from '../../store/actions'
 import React, { Fragment } from 'react'
 
 import DateField from '../DateField'
+import DeleteAction from '../DeleteAction'
 import HeaderCell from '../HeaderCell'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -53,12 +54,12 @@ const DataTable = ({
 							>
 								edit
 							</Link>
-							<Link
+							<DeleteAction
 								className={style.action}
-								to={`/translation/delete/${item.id}`}
+								tnid={item.id}
 							>
 								delete
-							</Link>
+							</DeleteAction>
 						</div>
 					</Fragment>
 				)

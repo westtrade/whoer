@@ -54,14 +54,16 @@ class TranslationForm extends React.Component {
 		})
 	}
 
-	handleSubmit() {
+	async handleSubmit() {
 		const { translation } = this.state
 		if (this.props.id) {
-			store.dispatch(updateTranslation(translation))
+			await store.dispatch(updateTranslation(this.props.id, translation))
+			this.props.history.push('/')
 			return
 		}
 
-		store.dispatch(createTranslation(translation))
+		await store.dispatch(createTranslation(translation))
+		this.props.history.push('/')
 	}
 
 	render() {
@@ -107,5 +109,6 @@ export default withRouter(
 		language: state.activeLanguage,
 		translation: state.translation,
 		id: props.match.params.id,
+		history: props.history,
 	}))(TranslationForm),
 )

@@ -3,7 +3,7 @@ import './common'
 import * as api from './api'
 
 import React, { Fragment } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch } from 'react-router-dom'
 import { fetchTranslation, initializeData } from './store/actions'
 
 import Button from './components/Button'
@@ -14,6 +14,7 @@ import LexiconPage from './components/LexiconPage'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 import TranslationForm from './components/TranslationForm'
+import TranslationPage from './components/TranslationPage'
 import store from './store'
 
 const App = () => {
@@ -35,7 +36,7 @@ const App = () => {
 						/>
 						<Route
 							path="/translation/:id"
-							component={TranslationForm}
+							component={TranslationPage}
 						/>
 					</Switch>
 				</Layout>
@@ -46,4 +47,3 @@ const App = () => {
 
 ReactDOM.render(<App />, document.getElementById('app'))
 store.dispatch(initializeData('en'))
-store.dispatch(fetchTranslation('34', 'ru'))

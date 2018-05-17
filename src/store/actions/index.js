@@ -14,6 +14,7 @@ export const createTranslation = (translation = {}) => {
 
 		const { activeLanguage } = getState()
 		const { name, snippet } = translation
+		let createdTranslation
 
 		try {
 			const { data: payload } = await api.createTranslation(
@@ -22,6 +23,8 @@ export const createTranslation = (translation = {}) => {
 				activeLanguage,
 				credentials,
 			)
+
+			createdTranslation = payload
 
 			dispatch({
 				type: actions.CREATE_TRANSLATION,
@@ -61,6 +64,39 @@ export const updateTranslation = (id, translation = {}) => {
 
 			dispatch({
 				type: actions.UPDATE_TRANSLATION,
+				payload,
+			})
+		} catch (e) {
+			dispatch({
+				type: actions.ERROR,
+				payload: e,
+			})
+		}
+
+		dispatch({
+			type: actions.LOADING,
+			payload: false,
+		})
+	}
+}
+
+export const deleteTranslation = id => {
+	return async (dispatch, getState) => {
+		dispatch({
+			type: actions.LOADING,
+			payload: true,
+		})
+
+		const { activeLanguage } = getState()
+
+		try {
+			const { data: payload } = await api.deleteTranslation(
+				id,
+				credentials,
+			)
+
+			dispatch({
+				type: actions.DELETE_TRANSLATION,
 				payload,
 			})
 		} catch (e) {

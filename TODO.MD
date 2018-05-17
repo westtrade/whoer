@@ -1,17 +1,18 @@
-- [] Gh-pages add prefix for url
+- [+] Gh-pages add prefix for url
 - [+] Lexicon page
-- [] Create page
-- [] Check forms
-- [] Edit page
-- [] Delete modal
-- [] Loading modal
-- [] Redux tests
-- [] View tanslation page
-- [] Add Back button to page (Create, Edit, View)
-- [] Watch stream
-- [] Add docs to redux functions
+- [+] Create page
+- [+] Edit page
+- [+] Delete action
+- [+] View tanslation page
+- [+] Add Back button to page (Create, Edit, View)
 - [+] Change titles on switch page
-- [] Add preload css
 - [+] Add bootstrap loading
 - [] Add sorts to table
 - [] Add error message
+- [] Empty table message
+- [] Check forms
+- [] Loading modal
+- [] Redux tests
+- [] Watch stream
+- [] Add docs to redux functions
+- [] Add preload css

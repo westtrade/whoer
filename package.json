@@ -11,14 +11,9 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"dependencies": {
-		"redux-promise-middleware": "^5.1.1"
-	},
+	"dependencies": {},
 	"jest": {
-		"moduleFileExtensions": [
-			"js",
-			"jsx"
-		],
+		"moduleFileExtensions": ["js", "jsx"],
 		"testEnvironment": "node",
 		"testRegex": "/test/.*\\.test\\.jsx?$"
 	},

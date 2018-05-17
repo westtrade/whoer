@@ -17,6 +17,10 @@ export const translations = (translations = [], action = {}) => {
 		return payload
 	}
 
+	if (type === actions.DELETE_TRANSLATION) {
+		return translations.filter(({ id }) => id !== payload.id)
+	}
+
 	return translations
 }
 
