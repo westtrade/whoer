@@ -95,7 +95,27 @@ export const translation = (translation = null, action) => {
 	return translation
 }
 
+export const sort = (sort, { type, payload = {} }) => {
+	sort = sort || {
+		field: 'id',
+		direction: -1,
+	}
+
+	if (type === actions.SORT_TRANSLATIONS_BY) {
+		const { field = 'id' } = payload || {}
+		const direction =
+			payload.direction !== 0 ? payload.direction : -sort.direction
+		return {
+			field,
+			direction,
+		}
+	}
+
+	return sort
+}
+
 export default combineReducers({
+	sort,
 	languages,
 	translations,
 	activeLanguage,

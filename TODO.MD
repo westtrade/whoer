@@ -17,3 +17,4 @@
 - [] Add docs to redux functions
 - [] Add preload css
 - [] Multilanguage
+- [] Fix production build for windows

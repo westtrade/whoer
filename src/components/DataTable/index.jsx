@@ -9,65 +9,74 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import style from './style'
 
-const DataTable = ({
-	data = [],
-	setSortable = field => {
-		console.log(field)
-	},
-}) => {
+const DataTable = ({ data = [], sortTranslationsBy = field => {} }) => {
 	return (
 		<div className={style.table}>
-			<HeaderCell cell="id" setSortable={setSortable}>
+			<HeaderCell cell="id" setSortable={sortTranslationsBy}>
 				id
 			</HeaderCell>
-			<HeaderCell cell="name" setSortable={setSortable}>
+			<HeaderCell cell="name" setSortable={sortTranslationsBy}>
 				name
 			</HeaderCell>
-			<HeaderCell cell="snippet" setSortable={setSortable}>
+			<HeaderCell cell="snippet" setSortable={sortTranslationsBy}>
 				snippet
 			</HeaderCell>
-			<HeaderCell cell="created" setSortable={setSortable}>
+			<HeaderCell cell="created" setSortable={sortTranslationsBy}>
 				created
 			</HeaderCell>
-			<HeaderCell cell="updated" setSortable={setSortable}>
+			<HeaderCell cell="updated" setSortable={sortTranslationsBy}>
 				updated
 			</HeaderCell>
 			<HeaderCell>operations</HeaderCell>
-			{data.map((item, idx) => {
-				return (
-					<Fragment key={item.id}>
-						<div className={style.cell}>{item.id}</div>
-						<div className={style.cell}>{item.name}</div>
-						<div className={style.cell}>{item.snippet}</div>
-						<DateField className={style.cell} date={item.created} />
-						<DateField className={style.cell} date={item.updated} />
-						<div className={style.cell}>
-							<Link
-								className={style.action}
-								to={`/translation/${item.id}`}
-							>
-								view
-							</Link>
-							<Link
-								className={style.action}
-								to={`/translation/edit/${item.id}`}
-							>
-								edit
-							</Link>
-							<DeleteAction
-								className={style.action}
-								tnid={item.id}
-							>
-								delete
-							</DeleteAction>
-						</div>
-					</Fragment>
-				)
-			})}
+			{data.map((item, idx) => (
+				<Fragment key={item.id}>
+					<div className={style.cell}>{item.id}</div>
+					<div className={style.cell}>{item.name}</div>
+					<div className={style.cell}>{item.snippet}</div>
+					<DateField className={style.cell} date={item.created} />
+					<DateField className={style.cell} date={item.updated} />
+					<div className={style.cell}>
+						<Link
+							className={style.action}
+							to={`/translation/${item.id}`}
+						>
+							view
+						</Link>
+						<Link
+							className={style.action}
+							to={`/translation/edit/${item.id}`}
+						>
+							edit
+						</Link>
+						<DeleteAction className={style.action} tnid={item.id}>
+							delete
+						</DeleteAction>
+					</div>
+				</Fragment>
+			))}
 		</div>
 	)
 }
 
-export default connect(state => ({
-	data: state.translations,
-}))(DataTable)
+export default connect(state => {
+	const { direction = -1, field = 'id' } = state.sort || {}
+	const data = state.translations
+		.sort((prev, next) => {
+			let result = 0
+			if (prev[field] > next[field]) {
+				result = 1
+			}
+
+			if (prev[field] < next[field]) {
+				result = -1
+			}
+
+			result = result * direction
+			return result
+		})
+		.slice(0)
+
+	return {
+		data,
+	}
+}, actions)(DataTable)
