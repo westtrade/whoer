@@ -98,7 +98,7 @@ export const translation = (translation = null, action) => {
 export const sort = (sort, { type, payload = {} }) => {
 	sort = sort || {
 		field: 'id',
-		direction: -1,
+		direction: 1,
 	}
 
 	if (type === actions.SORT_TRANSLATIONS_BY) {

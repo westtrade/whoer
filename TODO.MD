@@ -8,9 +8,9 @@
 - [+] Change titles on switch page
 - [+] Add bootstrap loading
 - [+] Watch stream
-- [] Add sorts to table
-- [] Add error message
+- [+] Add sorts to table
 - [] Empty table message
+- [] Add error message
 - [] Check forms
 - [] Loading modal
 - [] Redux tests
