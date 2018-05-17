@@ -21,6 +21,28 @@ export const translations = (translations = [], action = {}) => {
 		return translations.filter(({ id }) => id !== payload.id)
 	}
 
+	if (type === actions.UPDATE_TRANSLATIONS_BY_EVENT) {
+		if (payload.action === 'create') {
+			return [...translations, payload.translation]
+		}
+
+		if (payload.action === 'update') {
+			return translations.map(currentTranslation => {
+				if (currentTranslation.id === payload.translation.id) {
+					return payload.translation
+				}
+
+				return currentTranslation
+			})
+		}
+
+		if (payload.action === 'delete') {
+			return translations.filter(
+				({ id }) => id !== payload.translation.id,
+			)
+		}
+	}
+
 	return translations
 }
 
