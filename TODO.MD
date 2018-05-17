@@ -10,9 +10,9 @@
 - [+] Watch stream
 - [+] Add sorts to table
 - [+] Empty table message
-- [] Check forms
-- [] Add error message
+- [+] Validate forms
 - [] Loading modal
+- [] Add error message
 - [] Redux tests
 - [] Add docs to redux functions
 - [] Add preload css

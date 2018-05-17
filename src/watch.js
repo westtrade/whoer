@@ -10,9 +10,9 @@ events.addEventListener('translations', event => {
 	store.dispatch(updateTranslationsByEvent(event.data))
 })
 
-events.addEventListener('open', data => {
-	console.log('Open')
-})
+// events.addEventListener('open', data => {
+// 	console.log('Open')
+// })
 
 events.addEventListener('error', err => {
 	console.log('err', err)

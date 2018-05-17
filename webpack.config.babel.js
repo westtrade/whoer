@@ -44,6 +44,11 @@ const config = {
 					'stylus-loader',
 				],
 			},
+			{
+				test: /\.json5?/,
+				include: path.resolve('./src'),
+				loader: 'json5-loader',
+			},
 		],
 	},
 

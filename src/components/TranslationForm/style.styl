@@ -1,16 +1,22 @@
 .input
 	display block
-	width 740px
 	padding 10px
 	border solid 1px silver
-	& ~ &
-		margin-top 20px
+
 
 .wrapper
 	background-color rgba(0, 0, 0, 0.04)
 	padding 10px
 	margin-bottom 20px
 	border-radius 4px
+	display grid
+	grid-template-columns 740px auto
+	grid-gap 20px
+
 
 .back-button
 	margin-bottom 20px
+
+.error
+	padding-top 10px
+	color #ff0000
