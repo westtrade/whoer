@@ -16,6 +16,8 @@ const config = {
 		publicPath: '/build/',
 	},
 
+	devtool: 'source-map',
+
 	module: {
 		rules: [
 			{
