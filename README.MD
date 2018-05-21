@@ -1,6 +1,6 @@
 # Whoer Translate UI
 
-[Test link https://westtrade.github.io/whoer/](https://westtrade.github.io/whoer/)
+[DEMO](https://westtrade.github.io/whoer/)
 
 ## Installation
 
