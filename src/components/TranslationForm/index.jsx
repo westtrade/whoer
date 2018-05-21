@@ -149,7 +149,7 @@ class TranslationForm extends React.Component {
 					/>
 					{errors.snippet && (
 						<div className={style.error}>
-							{errors.name.join(', ')}
+							{errors.snippet.join(', ')}
 						</div>
 					)}
 				</div>

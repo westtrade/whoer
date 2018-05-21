@@ -56,6 +56,10 @@ export const activeLanguage = (language = 'en', action = {}) => {
 }
 
 export const loading = (isLoading = false, action = {}) => {
+	if (action.type === actions.LOADING) {
+		return action.payload
+	}
+
 	return isLoading
 }
 

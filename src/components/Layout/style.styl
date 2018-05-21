@@ -7,6 +7,11 @@
 	font-size 14px
 	font-weight bold
 
+.blur
+	filter: blur(2px)
+	transition filter .3s
+
+
 .header
 	height 180px
 	background-color #53BF40
@@ -15,6 +20,19 @@
 
 .layout
 	background-color #fff
+	position relative
+	height 100%
+	transition filter .3s
+
+.cloack
+	position absolute
+	z-index 99999
+	width 100%
+	height 100%
+	pointer-event none
+	top 0
+	left 0
+	background-color rgba(0, 0, 0, 0.2)
 
 .page-title
 	color #fff

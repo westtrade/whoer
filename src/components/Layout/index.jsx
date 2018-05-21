@@ -7,9 +7,10 @@ import { connect } from 'react-redux'
 import style from './style'
 import { withRouter } from 'react-router-dom'
 
-const Layout = ({ children, title = '', subTitle = '' }) => {
+const Layout = ({ children, title = '', subTitle = '', loading = false }) => {
 	return (
-		<div className={style.layout}>
+		<div className={`${style.layout} ${loading && style.blur}`}>
+			{loading && <div className={style.cloack} />}
 			<div className={style.topBar}>
 				<Link className={style.brand} to="/">
 					WHOER Translate UI
@@ -44,11 +45,10 @@ const Layout = ({ children, title = '', subTitle = '' }) => {
 }
 
 export default withRouter(
-	connect((state, props) => {
-		return {
-			children: props.children,
-			title: state.page.title,
-			subTitle: state.page.subTitle,
-		}
-	})(Layout),
+	connect(({ page, loading }, { children }) => ({
+		children: children,
+		title: page.title,
+		subTitle: page.subTitle,
+		loading,
+	}))(Layout),
 )
